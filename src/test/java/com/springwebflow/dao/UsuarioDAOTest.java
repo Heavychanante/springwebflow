@@ -1,6 +1,6 @@
 package com.springwebflow.dao;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,5 +30,41 @@ public class UsuarioDAOTest extends AbstractTransactionalJUnit4SpringContextTest
 		usuario.setPassword("test");
 		usuarioDAO.save(usuario);
 		assertNotNull(usuario.getId());
+	}
+
+	@Test
+	public void findById() {
+		Usuario usuario = new Usuario();
+		usuario.setAlias("test");
+		usuario.setNombre("test");
+		usuario.setPassword("test");
+		usuarioDAO.save(usuario);
+		Usuario encontrado = usuarioDAO.findById(usuario.getId());
+		assertNotNull(encontrado);
+	}
+
+	@Test
+	public void update() {
+		Usuario usuario = new Usuario();
+		usuario.setAlias("test");
+		usuario.setNombre("test");
+		usuario.setPassword("test");
+		usuarioDAO.save(usuario);
+		usuario.setAlias("test1");
+		usuarioDAO.update(usuario);
+		Usuario encontrado = usuarioDAO.findById(usuario.getId());
+		assertTrue("test1".equals(encontrado.getAlias()));
+	}
+
+	@Test
+	public void delete() {
+		Usuario usuario = new Usuario();
+		usuario.setAlias("test");
+		usuario.setNombre("test");
+		usuario.setPassword("test");
+		usuarioDAO.save(usuario);
+		usuarioDAO.delete(usuario);
+		Usuario encontrado = usuarioDAO.findById(usuario.getId());
+		assertNull(encontrado);
 	}
 }
