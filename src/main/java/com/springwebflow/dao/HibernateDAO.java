@@ -34,6 +34,7 @@ public abstract class HibernateDAO<T,E> implements Dao<T, E> {
         this.pkClass = (Class<E>) actualTypeArguments[1];
     }
 
+    @Override
     @Transactional
 	public void save(T entity) {
     	// Recupero la sesión de Hibernate actual
@@ -41,6 +42,7 @@ public abstract class HibernateDAO<T,E> implements Dao<T, E> {
     	session.save(entity);
 	}
 
+    @Override
 	@Transactional
 	public void update(T entity) {
 		// Recupero la sesión de Hibernate actual
@@ -48,6 +50,7 @@ public abstract class HibernateDAO<T,E> implements Dao<T, E> {
     	session.update(entity);
 	}
 
+    @Override
 	@Transactional
 	public void delete(T entity) {
 		// Recupero la sesión de Hibernate actual
@@ -56,6 +59,7 @@ public abstract class HibernateDAO<T,E> implements Dao<T, E> {
 	}
 
 	@SuppressWarnings("unchecked")
+	@Override
 	@Transactional
 	public T findById(E id) {
 		// Recupero la sesión de Hibernate actual
@@ -66,6 +70,7 @@ public abstract class HibernateDAO<T,E> implements Dao<T, E> {
 	}
 
 	@SuppressWarnings("unchecked")
+	@Override
 	@Transactional
 	public List<T> list() {
 		// Recupero la sesión de Hibernate actual

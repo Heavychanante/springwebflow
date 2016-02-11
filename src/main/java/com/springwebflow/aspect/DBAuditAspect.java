@@ -10,6 +10,8 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
+import com.springwebflow.aspect.exception.AspectException;
+
 /**
  * Clase que implementa el aspecto para guardar los campos de auditoría en los registros de base de datos
  * @author Hugo
@@ -19,7 +21,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class DBAuditAspect {
 
-	Logger log = Logger.getLogger(DBAuditAspect.class);
+	private static final Logger LOGGER = Logger.getLogger(DBAuditAspect.class);
 
 	@Before("execution(* com.springwebflow.dao.Dao.save(..))")
 	public void save(JoinPoint joinPoint) {
@@ -33,15 +35,20 @@ public class DBAuditAspect {
 			setCreacion.invoke(entity, new Object[]{timestamp});
 			setModificacion.invoke(entity, new Object[]{timestamp});
 		} catch (NoSuchMethodException e) {
-			log.error(e.getMessage());
+			LOGGER.info(e.getMessage());
+			throw new AspectException(e);
 		} catch (SecurityException e) {
-			log.error(e.getMessage());
+			LOGGER.info(e.getMessage());
+			throw new AspectException(e);
 		} catch (IllegalAccessException e) {
-			log.error(e.getMessage());
+			LOGGER.info(e.getMessage());
+			throw new AspectException(e);
 		} catch (IllegalArgumentException e) {
-			log.error(e.getMessage());
+			LOGGER.info(e.getMessage());
+			throw new AspectException(e);
 		} catch (InvocationTargetException e) {
-			log.error(e.getMessage());
+			LOGGER.info(e.getMessage());
+			throw new AspectException(e);
 		}
 	}
 
@@ -55,15 +62,20 @@ public class DBAuditAspect {
 			Method setModificacion = entity.getClass().getMethod("setModificacion", new Class[]{Timestamp.class});
 			setModificacion.invoke(entity, new Object[]{timestamp});
 		} catch (NoSuchMethodException e) {
-			log.error(e.getMessage());
+			LOGGER.info(e.getMessage());
+			throw new AspectException(e);
 		} catch (SecurityException e) {
-			log.error(e.getMessage());
+			LOGGER.info(e.getMessage());
+			throw new AspectException(e);
 		} catch (IllegalAccessException e) {
-			log.error(e.getMessage());
+			LOGGER.info(e.getMessage());
+			throw new AspectException(e);
 		} catch (IllegalArgumentException e) {
-			log.error(e.getMessage());
+			LOGGER.info(e.getMessage());
+			throw new AspectException(e);
 		} catch (InvocationTargetException e) {
-			log.error(e.getMessage());
+			LOGGER.info(e.getMessage());
+			throw new AspectException(e);
 		}
 	}
 	
