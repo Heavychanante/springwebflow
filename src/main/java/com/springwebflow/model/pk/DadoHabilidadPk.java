@@ -25,7 +25,7 @@ public class DadoHabilidadPk implements Serializable {
 	private Integer habilidadId;
 
 	public DadoHabilidadPk() {
-
+		super();
 	}
 
 	public DadoHabilidadPk(Integer dadoId, Integer habilidadId) {

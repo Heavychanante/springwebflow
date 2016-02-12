@@ -52,7 +52,7 @@ public class Habilidad {
 	// CONSTRUCTORES //
 
 	public Habilidad() {
-
+		super();
 	}
 
 	public Habilidad(String nombre, String descripcion, Integer penalizacion, Integer costeExperiencia) {

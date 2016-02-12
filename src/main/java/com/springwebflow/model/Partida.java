@@ -38,7 +38,7 @@ public class Partida {
 	// CONSTRUCTORES //
 
 	public Partida() {
-
+		super();
 	}
 
 	public Partida(String nombre) {

@@ -38,7 +38,7 @@ public class CampaniaPartida {
 	// CONSTRUCTORES //
 
 	public CampaniaPartida() {
-
+		super();
 	}
 
 	// MÉTODOS //

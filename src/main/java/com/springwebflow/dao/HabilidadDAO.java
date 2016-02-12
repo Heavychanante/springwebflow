@@ -16,7 +16,7 @@ import com.springwebflow.model.JugadorHabilidad;
 public class HabilidadDAO extends HibernateDAO<Habilidad, Integer> {
 
 	@SuppressWarnings("unchecked")
-	public List<Habilidad> getHabilidadesAsignables(Integer jugadorId, Clase clase, Integer indice, Integer cantidad, List<JugadorHabilidad> habilidadesJugador) {
+	public List<Habilidad> getHabilidadesAsignables(Clase clase, Integer indice, Integer cantidad, List<JugadorHabilidad> habilidadesJugador) {
 		Session session = this.sessionFactory.getCurrentSession();
 		Criteria criteria = session.createCriteria(Habilidad.class);
 		criteria.add(Restrictions.eq("clase", clase));

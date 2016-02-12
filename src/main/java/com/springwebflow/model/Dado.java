@@ -40,7 +40,7 @@ public class Dado {
 	// CONSTRUCTORES //
 
 	public Dado() {
-
+		super();
 	}
 
 	public Dado(String tipo, String color) {

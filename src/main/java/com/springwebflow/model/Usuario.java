@@ -44,7 +44,7 @@ public class Usuario {
 	// CONSTRUCTORES //
 
 	public Usuario() {
-		
+		super();
 	}
 
 	public Usuario(String nombre, String alias) {

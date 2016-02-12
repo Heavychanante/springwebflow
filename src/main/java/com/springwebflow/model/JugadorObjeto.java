@@ -38,7 +38,7 @@ public class JugadorObjeto {
 	// CONSTRUCTORES //
 
 	public JugadorObjeto() {
-
+		super();
 	}
 
 	// MÉTODOS //

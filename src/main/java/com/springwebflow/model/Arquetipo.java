@@ -44,7 +44,7 @@ public class Arquetipo {
 	// CONSTRUCTORES //
 
 	public Arquetipo() {
-
+		super();
 	}
 
 	public Arquetipo(String nombre) {

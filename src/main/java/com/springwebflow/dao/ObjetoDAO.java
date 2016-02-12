@@ -30,7 +30,7 @@ public class ObjetoDAO extends HibernateDAO<Objeto, Integer> {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Objeto> getObjetosAsignables(Integer jugadorId, Integer indice, Integer cantidad, List<JugadorObjeto> objetosJugador) {
+	public List<Objeto> getObjetosAsignables(Integer indice, Integer cantidad, List<JugadorObjeto> objetosJugador) {
 		Session session = this.sessionFactory.getCurrentSession();
 		Criteria criteria = session.createCriteria(Objeto.class);
 		for (JugadorObjeto jugadorObjeto : objetosJugador) {

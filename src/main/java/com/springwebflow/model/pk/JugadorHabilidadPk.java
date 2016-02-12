@@ -25,7 +25,7 @@ public class JugadorHabilidadPk implements Serializable {
 	private Integer habilidadId;
 
 	public JugadorHabilidadPk() {
-
+		super();
 	}
 
 	public JugadorHabilidadPk(Integer jugadorId, Integer habilidadId) {

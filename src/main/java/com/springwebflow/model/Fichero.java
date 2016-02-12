@@ -46,7 +46,7 @@ public class Fichero {
 	// CONSTRUCTORES //
 
 	public Fichero() {
-			
+		super();
 	}
 
 	public Fichero(String nombre, String mime, String hash, byte[] bytes) {

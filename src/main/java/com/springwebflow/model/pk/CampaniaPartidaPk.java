@@ -25,7 +25,7 @@ public class CampaniaPartidaPk implements Serializable {
 	private Integer partidaId;
 
 	public CampaniaPartidaPk() {
-
+		super();
 	}
 
 	public CampaniaPartidaPk(Integer campaniaId, Integer partidaId) {

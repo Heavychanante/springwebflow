@@ -25,7 +25,7 @@ public class JugadorObjetoPk implements Serializable {
 	private Integer objetoId;
 
 	public JugadorObjetoPk() {
-
+		super();
 	}
 
 	public JugadorObjetoPk(Integer jugadorId, Integer objetoId) {

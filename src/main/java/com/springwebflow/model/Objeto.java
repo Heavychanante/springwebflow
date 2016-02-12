@@ -61,7 +61,7 @@ public class Objeto {
 	// CONSTRUCTORES //
 
 	public Objeto() {
-
+		super();
 	}
 
 	public Objeto(String nombre, String tipo, Integer precio, String descripcion, Integer manos, Boolean aDistancia) {

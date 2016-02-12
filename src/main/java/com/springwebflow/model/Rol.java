@@ -38,7 +38,7 @@ public class Rol {
 	// CONSTRUCTORES //
 
 	public Rol() {
-
+		super();
 	}
 
 	public Rol(String nombre) {

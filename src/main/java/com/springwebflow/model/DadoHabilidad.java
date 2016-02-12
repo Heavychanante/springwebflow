@@ -38,7 +38,7 @@ public class DadoHabilidad {
 	// CONSTRUCTORES //
 
 	public DadoHabilidad() {
-
+		super();
 	}
 
 	// MÉTODOS //

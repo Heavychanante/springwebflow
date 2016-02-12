@@ -73,7 +73,7 @@ public class Personaje {
 	// CONSTRUCTORES //
 
 	public Personaje() {
-
+		super();
 	}
 
 	public Personaje(String nombre, String capacidad, Integer velocidad, Integer vida, Integer aguante,

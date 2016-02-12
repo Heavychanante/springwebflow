@@ -41,7 +41,7 @@ public class DadoObjeto {
 	// CONSTRUCTORES //
 
 	public DadoObjeto() {
-
+		super();
 	}
 
 	// MÉTODOS //

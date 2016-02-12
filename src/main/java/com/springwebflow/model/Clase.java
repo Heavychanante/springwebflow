@@ -42,7 +42,7 @@ public class Clase {
 
 	// CONSTRUCTORES //
 	public Clase() {
-
+		super();
 	}
 
 	public Clase(String nombre) {

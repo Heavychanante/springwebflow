@@ -25,7 +25,7 @@ public class DadoObjetoPk implements Serializable {
 	private Integer objetoId;
 
 	public DadoObjetoPk() {
-
+		super();
 	}
 
 	public DadoObjetoPk(Integer dadoId, Integer objetoId) {

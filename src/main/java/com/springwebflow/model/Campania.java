@@ -35,7 +35,7 @@ public class Campania {
 
 	@ManyToOne
 	@JoinColumn(name = "campania_id")
-	private Campania campania;
+	private Campania campaniaPadre;
 
 	@Column(name = "creacion")
 	private Timestamp creacion;
@@ -46,7 +46,7 @@ public class Campania {
 	// CONSTRUCTORES //
 
 	public Campania() {
-
+		super();
 	}
 
 	public Campania(String titulo, Integer acto) {
@@ -80,12 +80,12 @@ public class Campania {
 		this.acto = acto;
 	}
 
-	public Campania getCampania() {
-		return campania;
+	public Campania getCampaniaPadre() {
+		return campaniaPadre;
 	}
 
-	public void setCampania(Campania campania) {
-		this.campania = campania;
+	public void setCampaniaPadre(Campania campaniaPadre) {
+		this.campaniaPadre = campaniaPadre;
 	}
 
 	public Timestamp getCreacion() {
