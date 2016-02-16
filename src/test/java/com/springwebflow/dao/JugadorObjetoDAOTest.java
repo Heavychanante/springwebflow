@@ -4,6 +4,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -16,24 +18,24 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.springwebflow.model.Jugador;
-import com.springwebflow.model.JugadorHabilidad;
-import com.springwebflow.model.pk.JugadorHabilidadPk;
+import com.springwebflow.model.JugadorObjeto;
+import com.springwebflow.model.pk.JugadorObjetoPk;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/applicationContext.xml")
 @TransactionConfiguration
 @Transactional
-public class JugadorHabilidadDAOTest extends AbstractTransactionalJUnit4SpringContextTests {
+public class JugadorObjetoDAOTest extends AbstractTransactionalJUnit4SpringContextTests {
 
 	@Autowired
-	private JugadorHabilidadDAO jugadorHabilidadDAO;
+	private JugadorObjetoDAO jugadorObjetoDAO;
 
 	@Autowired
 	private JugadorDAO jugadorDAO;
 
 	@Test
 	public void save() {
-		JugadorHabilidad jugadorHabilidad = new JugadorHabilidad();
+		JugadorObjeto jugadorObjeto = new JugadorObjeto();
 		Jugador jugador = new Jugador();
 		jugador.setAlias("test");
 		jugador.setAguante(1);
@@ -46,18 +48,17 @@ public class JugadorHabilidadDAOTest extends AbstractTransactionalJUnit4SpringCo
 		jugador.setProeza(Boolean.FALSE);
 		jugador.setVida(10);
 		jugadorDAO.save(jugador);
-		JugadorHabilidadPk pk = new JugadorHabilidadPk();
+		JugadorObjetoPk pk = new JugadorObjetoPk();
 		pk.setJugadorId(jugador.getId());
-		pk.setHabilidadId(1);
-		jugadorHabilidad.setId(pk);
-		jugadorHabilidad.setCantidad(1);
-		jugadorHabilidadDAO.save(jugadorHabilidad);
-		assertNotNull(jugadorHabilidad.getId());
+		pk.setObjetoId(1);
+		jugadorObjeto.setId(pk);
+		jugadorObjetoDAO.save(jugadorObjeto);
+		assertNotNull(jugadorObjeto.getId());
 	}
 
 	@Test
 	public void findById() {
-		JugadorHabilidad jugadorHabilidad = new JugadorHabilidad();
+		JugadorObjeto jugadorObjeto = new JugadorObjeto();
 		Jugador jugador = new Jugador();
 		jugador.setAlias("test");
 		jugador.setAguante(1);
@@ -70,19 +71,18 @@ public class JugadorHabilidadDAOTest extends AbstractTransactionalJUnit4SpringCo
 		jugador.setProeza(Boolean.FALSE);
 		jugador.setVida(10);
 		jugadorDAO.save(jugador);
-		JugadorHabilidadPk pk = new JugadorHabilidadPk();
+		JugadorObjetoPk pk = new JugadorObjetoPk();
 		pk.setJugadorId(jugador.getId());
-		pk.setHabilidadId(1);
-		jugadorHabilidad.setId(pk);
-		jugadorHabilidad.setCantidad(1);
-		jugadorHabilidadDAO.save(jugadorHabilidad);
-		JugadorHabilidad encontrado = jugadorHabilidadDAO.findById(jugadorHabilidad.getId());
+		pk.setObjetoId(1);
+		jugadorObjeto.setId(pk);
+		jugadorObjetoDAO.save(jugadorObjeto);
+		JugadorObjeto encontrado = jugadorObjetoDAO.findById(jugadorObjeto.getId());
 		assertNotNull(encontrado);
 	}
 
 	@Test
 	public void update() {
-		JugadorHabilidad jugadorHabilidad = new JugadorHabilidad();
+		JugadorObjeto jugadorObjeto = new JugadorObjeto();
 		Jugador jugador = new Jugador();
 		jugador.setAlias("test");
 		jugador.setAguante(1);
@@ -95,21 +95,22 @@ public class JugadorHabilidadDAOTest extends AbstractTransactionalJUnit4SpringCo
 		jugador.setProeza(Boolean.FALSE);
 		jugador.setVida(10);
 		jugadorDAO.save(jugador);
-		JugadorHabilidadPk pk = new JugadorHabilidadPk();
+		JugadorObjetoPk pk = new JugadorObjetoPk();
 		pk.setJugadorId(jugador.getId());
-		pk.setHabilidadId(1);
-		jugadorHabilidad.setId(pk);
-		jugadorHabilidad.setCantidad(1);
-		jugadorHabilidadDAO.save(jugadorHabilidad);
-		jugadorHabilidad.setCantidad(2);
-		jugadorHabilidadDAO.update(jugadorHabilidad);
-		JugadorHabilidad encontrado = jugadorHabilidadDAO.findById(jugadorHabilidad.getId());
-		assertTrue(encontrado.getCantidad() == 2);
+		pk.setObjetoId(1);
+		jugadorObjeto.setId(pk);
+		jugadorObjetoDAO.save(jugadorObjeto);
+		Date date = new Date();
+		Timestamp ts = new Timestamp(date.getTime());
+		jugadorObjeto.setModificacion(ts);
+		jugadorObjetoDAO.update(jugadorObjeto);
+		JugadorObjeto encontrado = jugadorObjetoDAO.findById(jugadorObjeto.getId());
+		assertTrue(date.getTime() == encontrado.getModificacion().getTime());
 	}
 
 	@Test
 	public void delete() {
-		JugadorHabilidad jugadorHabilidad = new JugadorHabilidad();
+		JugadorObjeto jugadorObjeto = new JugadorObjeto();
 		Jugador jugador = new Jugador();
 		jugador.setAlias("test");
 		jugador.setAguante(1);
@@ -122,20 +123,19 @@ public class JugadorHabilidadDAOTest extends AbstractTransactionalJUnit4SpringCo
 		jugador.setProeza(Boolean.FALSE);
 		jugador.setVida(10);
 		jugadorDAO.save(jugador);
-		JugadorHabilidadPk pk = new JugadorHabilidadPk();
+		JugadorObjetoPk pk = new JugadorObjetoPk();
 		pk.setJugadorId(jugador.getId());
-		pk.setHabilidadId(1);
-		jugadorHabilidad.setId(pk);
-		jugadorHabilidad.setCantidad(1);
-		jugadorHabilidadDAO.save(jugadorHabilidad);
-		jugadorHabilidadDAO.delete(jugadorHabilidad);
-		JugadorHabilidad encontrado = jugadorHabilidadDAO.findById(jugadorHabilidad.getId());
+		pk.setObjetoId(1);
+		jugadorObjeto.setId(pk);
+		jugadorObjetoDAO.save(jugadorObjeto);
+		jugadorObjetoDAO.delete(jugadorObjeto);
+		JugadorObjeto encontrado = jugadorObjetoDAO.findById(jugadorObjeto.getId());
 		assertNull(encontrado);
 	}
 
 	@Test
 	public void list() {
-		JugadorHabilidad jugadorHabilidad = new JugadorHabilidad();
+		JugadorObjeto jugadorObjeto = new JugadorObjeto();
 		Jugador jugador = new Jugador();
 		jugador.setAlias("test");
 		jugador.setAguante(1);
@@ -148,13 +148,12 @@ public class JugadorHabilidadDAOTest extends AbstractTransactionalJUnit4SpringCo
 		jugador.setProeza(Boolean.FALSE);
 		jugador.setVida(10);
 		jugadorDAO.save(jugador);
-		JugadorHabilidadPk pk = new JugadorHabilidadPk();
+		JugadorObjetoPk pk = new JugadorObjetoPk();
 		pk.setJugadorId(jugador.getId());
-		pk.setHabilidadId(1);
-		jugadorHabilidad.setId(pk);
-		jugadorHabilidad.setCantidad(1);
-		jugadorHabilidadDAO.save(jugadorHabilidad);
-		List<JugadorHabilidad> list = jugadorHabilidadDAO.list();
+		pk.setObjetoId(1);
+		jugadorObjeto.setId(pk);
+		jugadorObjetoDAO.save(jugadorObjeto);
+		List<JugadorObjeto> list = jugadorObjetoDAO.list();
 		assertTrue(list.size() > 0);
 	}
 }
