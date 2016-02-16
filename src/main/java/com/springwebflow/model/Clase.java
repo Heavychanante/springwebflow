@@ -63,6 +63,10 @@ public class Clase {
 		return nombre;
 	}
 
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
 	public Arquetipo getArquetipo() {
 		return arquetipo;
 	}

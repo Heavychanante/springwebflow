@@ -49,6 +49,9 @@ public class Jugador {
 	@JoinColumn(name = "partida_id")
 	private Partida partida;
 
+	@Column(name = "alias", nullable = false)
+	private String alias;
+
 	@Column(name = "vida", nullable = false)
 	private Integer vida;
 
@@ -141,6 +144,14 @@ public class Jugador {
 
 	public void setPartida(Partida partida) {
 		this.partida = partida;
+	}
+
+	public String getAlias() {
+		return alias;
+	}
+
+	public void setAlias(String alias) {
+		this.alias = alias;
 	}
 
 	public Integer getVida() {
