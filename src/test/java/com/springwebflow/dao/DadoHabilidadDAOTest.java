@@ -76,12 +76,9 @@ public class DadoHabilidadDAOTest extends AbstractTransactionalJUnit4SpringConte
 		pk.setHabilidadId(1);
 		dadoHabilidad.setId(pk);
 		dadoHabilidadDAO.save(dadoHabilidad);
-		Date date = new Date();
-		Timestamp ts = new Timestamp(date.getTime());
-		dadoHabilidad.setModificacion(ts);
 		dadoHabilidadDAO.update(dadoHabilidad);
 		DadoHabilidad encontrado = dadoHabilidadDAO.findById(dadoHabilidad.getId());
-		assertTrue(date.getTime() == encontrado.getModificacion().getTime());
+		assertTrue(pk.equals(encontrado.getId()));
 	}
 
 	@Test
