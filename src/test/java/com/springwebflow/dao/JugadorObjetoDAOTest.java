@@ -100,12 +100,9 @@ public class JugadorObjetoDAOTest extends AbstractTransactionalJUnit4SpringConte
 		pk.setObjetoId(1);
 		jugadorObjeto.setId(pk);
 		jugadorObjetoDAO.save(jugadorObjeto);
-		Date date = new Date();
-		Timestamp ts = new Timestamp(date.getTime());
-		jugadorObjeto.setModificacion(ts);
 		jugadorObjetoDAO.update(jugadorObjeto);
 		JugadorObjeto encontrado = jugadorObjetoDAO.findById(jugadorObjeto.getId());
-		assertTrue(date.getTime() == encontrado.getModificacion().getTime());
+		assertTrue(pk.equals(encontrado.getId()));
 	}
 
 	@Test
